@@ -1,23 +1,82 @@
 <?xml version="1.0" encoding="utf-8"?>
-<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+<FrameLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
-    android:gravity="center"
-    android:orientation="vertical"
-    android:padding="24dp">
+    android:background="#F9F9F9"
+    tools:context=".CardFragment">
 
-    <TextView
-        android:layout_width="wrap_content"
+    <LinearLayout
+        android:layout_width="match_parent"
         android:layout_height="wrap_content"
-        android:text="这里是卡片页面（B）"
-        android:textSize="20sp"
-        android:textStyle="bold"
-        android:textColor="@android:color/holo_blue_dark" />
+        android:layout_gravity="center"
+        android:orientation="vertical"
+        android:gravity="center">
 
-    <Button
-        android:id="@+id/btn_back_home_card"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:text="返回首页"
-        android:layout_marginTop="24dp"/>
-</LinearLayout>
+        <!-- 卡片指示器 -->
+        <TextView
+            android:id="@+id/cardIndicator"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="1/5"
+            android:textSize="16sp"
+            android:textColor="#666"
+            android:layout_marginBottom="16dp"
+            android:padding="8dp" />
+
+        <!-- 卡片容器 -->
+        <androidx.cardview.widget.CardView
+            android:id="@+id/flashcard"
+            android:layout_width="300dp"
+            android:layout_height="400dp"
+            android:layout_gravity="center"
+            android:clickable="true"
+            android:focusable="true"
+            android:elevation="8dp"
+            android:background="@android:color/white"
+            app:cardCornerRadius="16dp"
+            android:layout_marginBottom="32dp">
+
+            <FrameLayout
+                android:layout_width="match_parent"
+                android:layout_height="match_parent"
+                android:gravity="center">
+
+                <TextView
+                    android:id="@+id/frontText"
+                    android:layout_width="match_parent"
+                    android:layout_height="match_parent"
+                    android:gravity="center"
+                    android:text="正面 - 点击翻转"
+                    android:textColor="#000"
+                    android:textSize="22sp"
+                    android:padding="16dp"
+                    android:visibility="visible" />
+
+                <TextView
+                    android:id="@+id/backText"
+                    android:layout_width="match_parent"
+                    android:layout_height="match_parent"
+                    android:gravity="center"
+                    android:text="背面 - 翻转成功!"
+                    android:textColor="#000"
+                    android:textSize="18sp"
+                    android:padding="16dp"
+                    android:visibility="gone" />
+
+            </FrameLayout>
+        </androidx.cardview.widget.CardView>
+
+        <!-- 返回按钮 -->
+        <Button
+            android:id="@+id/btn_back_home_card"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="返回主页"
+            android:layout_marginTop="16dp"
+            android:padding="16dp" />
+
+    </LinearLayout>
+
+</FrameLayout>
