@@ -3,6 +3,8 @@ package com.example.myapplication
 import androidx.appcompat.app.AppCompatActivity
 import android.os.Bundle
 import android.widget.Button
+import android.widget.ImageButton
+import com.google.android.material.floatingactionbutton.FloatingActionButton
 
 class MainActivity : AppCompatActivity() {
 
@@ -38,10 +40,11 @@ class MainActivity : AppCompatActivity() {
         btnBack.setOnClickListener { showHomePage() }
     }
 
-    // AI 抽查页
+    // AI 抽查页hal
     private fun showQuizPage() {
-        setContentView(R.layout.fragment_quiz)
-        val btnBack: Button = findViewById(R.id.btn_back_home_quiz)
-        btnBack.setOnClickListener { showHomePage() }
+        supportFragmentManager.beginTransaction()
+            .replace(android.R.id.content, QuizFragment())
+            .addToBackStack("quiz")
+            .commit()
     }
 }
