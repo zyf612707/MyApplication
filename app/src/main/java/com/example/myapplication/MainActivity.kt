@@ -1,8 +1,22 @@
 package com.example.myapplication
 
+import android.util.Log
+
 import androidx.appcompat.app.AppCompatActivity
 import android.os.Bundle
 import android.widget.Button
+import android.widget.ImageButton
+import com.google.android.material.floatingactionbutton.FloatingActionButton
+import android.widget.TextView
+import android.view.MotionEvent
+import android.view.View
+
+// 卡片数据类
+data class FlashCard(
+    val title: String,
+    val content: String,
+    var isFront: Boolean = true
+)
 
 class MainActivity : AppCompatActivity() {
 
@@ -12,7 +26,7 @@ class MainActivity : AppCompatActivity() {
     }
 
     // 首页（有三个按钮）
-    private fun showHomePage() {
+    fun showHomePage() {
         setContentView(R.layout.activity_main)
 
         val btnUpload: Button = findViewById(R.id.btn_upload)
@@ -33,15 +47,27 @@ class MainActivity : AppCompatActivity() {
 
     // 卡片页
     private fun showCardPage() {
-        setContentView(R.layout.fragment_card)
-        val btnBack: Button = findViewById(R.id.btn_back_home_card)
-        btnBack.setOnClickListener { showHomePage() }
+        Log.d("MainActivity", "showCardPage called - attempting to show CardFragment")
+
+        try {
+            val cardFragment = CardFragment()
+
+            supportFragmentManager.beginTransaction()
+                .replace(android.R.id.content, cardFragment)
+                .addToBackStack("card")
+                .commit()
+
+            Log.d("MainActivity", "Fragment transaction completed")
+        } catch (e: Exception) {
+            Log.e("MainActivity", "Error showing CardFragment", e)
+        }
     }
 
-    // AI 抽查页
+    // AI 抽查页hal
     private fun showQuizPage() {
-        setContentView(R.layout.fragment_quiz)
-        val btnBack: Button = findViewById(R.id.btn_back_home_quiz)
-        btnBack.setOnClickListener { showHomePage() }
+        supportFragmentManager.beginTransaction()
+            .replace(android.R.id.content, QuizFragment())
+            .addToBackStack("quiz")
+            .commit()
     }
 }

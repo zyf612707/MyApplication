@@ -1,3 +1,11 @@
 <resources>
     <string name="app_name">My Application</string>
+    <string name="ai_quiz_title">AI智能抽查</string>
+    <string name="input_hint">输入你的回答...</string>
+    <string name="send_button">发送</string>
+    <string name="ai_teacher_icon">AI老师图标</string>
+    <string name="thinking_animation">思考动画</string>
+    <string name="loading_animation">加载动画</string>
+    <string name="ai_avatar">AI头像</string>
+    <string name="user_avatar">用户头像</string>
 </resources>
