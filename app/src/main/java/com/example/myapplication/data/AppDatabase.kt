@@ -1,4 +1,4 @@
-package com.example.upload10.data
+package com.example.myapplication.data
 
 import androidx.room.Database
 import androidx.room.RoomDatabase
